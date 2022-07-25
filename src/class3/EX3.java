@@ -7,7 +7,6 @@ public class EX3 { // CS
     public static void main(String[] args) { //MS
         // * 입력객체 선언 [ 한번만 작성 ]
         Scanner scanner = new Scanner(System.in);
-
         // 1. 배수찾기 [ 나머지값 이용하기 ]
             // 값 % 수 == 0           / :나누기(몫) vs %:나누기(나머지)
                 //어떤 값의 나누기 수를 했을때 나머지가 0 이면 그 값은 그 수 의 배수
@@ -22,7 +21,6 @@ public class EX3 { // CS
         System.out.print(" 정수3 : ");    int 정수3 = scanner.nextInt();
         System.out.println(" 입력받은 정수는 7의 배수 이면서 홀수인지 : "
                 + (정수3%7==0 && 정수3%2==1) );
-
         System.out.println(" 입력받은 정수는 7의 배수 이거나 홀수인지 : "
                 + (정수3%7==0 || 정수3%2==1) );
     } // ME
