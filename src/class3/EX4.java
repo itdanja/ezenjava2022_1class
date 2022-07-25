@@ -20,6 +20,12 @@ public class EX4 {
         System.out.print(" 밑변 : "); double 밑변 = scanner.nextDouble();
         System.out.print(" 높이 : "); double 높이 = scanner.nextDouble();
         System.out.println(" 사다리꼴 넓이 : " + ( (윗변*밑변)*높이 / 2 ) );
+        // 4.
+        System.out.print( " 키 : "); int 키 = scanner.nextInt();
+        System.out.println(" 표준체중 : " + (키-100)*0.9);
+        // 5.
+        System.out.print(" inch : " ); double 인치 = scanner.nextDouble();
+        System.out.println(" inch --> cm   : " + (인치*2.54) );
 
     }
 }
