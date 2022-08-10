@@ -1,7 +1,6 @@
 package class8;
 
 public class Board { // 게시판 클래스
-
     // 1. 필드 = 데이터 저장하는 곳
     String title;   // 제목 . String : 문자열 클래스 -> 문자열을 저장할수 있는 객체 선언
     String content; // 내용
@@ -20,11 +19,16 @@ public class Board { // 게시판 클래스
     } // 함수 end
     void boardlist( Board[] boards ){ // 2. 글보기
         System.out.println("------------ 게시판 목록 ---------------");
-        System.out.println("제목\t내용\t작성자");
+        System.out.println("번호\t제목\t내용\t작성자");
         for( int i = 0 ; i<boards.length; i++ ){
-            System.out.println( boards[i].title+"\t"+boards[i].content+"\t"+boards[i].writer);
+            if( boards[i] == null ){ break; } // 만약에 i번째 인덱스가 비어있으면 종료
+            System.out.println( i + "\t"+
+                    boards[i].title+"\t"+
+                    boards[i].content+"\t"+
+                    boards[i].writer);
         } // for end
     } // 함수 end
-
-
 } // class end
+
+
+
