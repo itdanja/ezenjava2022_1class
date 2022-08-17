@@ -8,6 +8,8 @@ public class ATM {
     // 1.필드
     Scanner scanner = new Scanner(System.in);
     ArrayList<계좌> 계좌목록 = new ArrayList<>(); // 계좌클래스의 객체를 여러개 저장할수 있는 객체선언
+        // 리스트명.add( 객체 ) : 객체 추가
+        // 리스트명.get( 인덱스 ) : 해당 인덱스의 객체 호출
     // 3.메소드
     public void 계좌생성(){   // 1. 계좌생성메소드
         Random random = new Random();   // 계좌번호 난수 생성
@@ -29,7 +31,14 @@ public class ATM {
         계좌목록.add( temp );  // 리스트에 객체 추가 [ 리스트명.add( 객체 ) : 리스트에 객체 추가 ]
     }
     // 2. 계좌생성메소드
-    public void 예금(){ return; }
+    public void 예금(){
+        System.out.print("계좌번호 : ");   String 계좌번호 = scanner.next();
+        int index = 계좌찾기( 계좌번호 );  // 계좌번호 찾기
+        if( index == -1 ){ System.out.println("안내) 동일한 계좌번호가 없습니다. "); return; }
+        System.out.print("예금액 : ");     int 예금액 = scanner.nextInt();
+        계좌목록.get( index ).set예금액(  계좌목록.get( index ).get예금액() + 예금액 );  // 예금액 업데이트
+        System.out.println("안내) 예금 후 잔액 : " + 계좌목록.get(index).get예금액() ); // 안내
+    } // f  end
     // 3. 계좌생성메소드
     public void 출금(){  return; }
     // 4. 계좌생성메소드
@@ -37,6 +46,21 @@ public class ATM {
     // 5. 계좌생성메소드
     public void 이체(){ return; }
     // 6. 계좌생성메소드
-    public void 계좌찾기(){  return; }
+    public int 계좌찾기( String 계좌번호 ){
+        for ( int i = 0 ; i<계좌목록.size() ; i++ ){ // i는 0부터 계좌목록 리스트의 길이까지 1씩증가 반복
+            if( 계좌목록.get( i ).get계좌번호().equals( 계좌번호 ) ){   // 만약에 리스트에서 i번째 객체의 계좌번호가 입력받은 계좌번화 동일하면
+                return i; // i번째 인덱스 반환
+            } // if end
+        } // for end
+        return -1; // 만약에 리스트에서 동일한 계좌번호가 없으면 -1 
+    } // f end
 
 }
+
+
+
+
+
+
+
+
