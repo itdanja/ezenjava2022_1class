@@ -40,11 +40,58 @@ public class ATM {
         System.out.println("안내) 예금 후 잔액 : " + 계좌목록.get(index).get예금액() ); // 안내
     } // f  end
     // 3. 계좌생성메소드
-    public void 출금(){  return; }
+    public void 출금(){
+        System.out.print("계좌번호 : "); String 계좌번호 = scanner.next();
+        // 계좌확인 
+        int index = 계좌찾기( 계좌번호 );
+        if( index == -1 ){ System.out.println("안내) 동일한 계좌번호가 없습니다. "); return; }
+        // 계좌의 비밀번호 확인 
+        System.out.print("비밀번호 : "); String 비밀번호 = scanner.next();
+        if( !계좌목록.get( index ).get비밀번호().equals( 비밀번호 ) ){ // 리스트내 i번째 객체의 비밀번호 와 입력한 비밀번호가 같으면 ! -> 같지않으면
+            // !:부정 [ true -> false ]
+            System.out.println("안내) 비밀번호가 틀렸습니다. "); return;
+        }
+        System.out.print("출금액 : "); int 출금액 = scanner.nextInt(); // 출금액 입력받기
+        // 만약에 예금액보다 출금액 더 크면 출금 못함
+        if( 계좌목록.get( index ).get예금액() < 출금액 ){ System.out.println("안내) 잔액이 부족합니다. "); }
+        else{ 계좌목록.get( index ).set예금액( 계좌목록.get(index).get예금액() - 출금액 );  }
+        System.out.println("안내) 출금 후 잔액 : " + 계좌목록.get(index).get예금액() ); // 안내
+    }
     // 4. 계좌생성메소드
     public void 잔금(){  return;  }
     // 5. 계좌생성메소드
-    public void 이체(){ return; }
+    public void 이체(){
+        // 본인 : 계좌번호 , 비밀번호 , 이체액    // 상대방 : 계좌번호
+        // 본인 계좌번호 확인
+        System.out.print("계좌번호 : ");        String from계좌번호 = scanner.next();
+        int fromindex = 계좌찾기( from계좌번호 );
+        if( fromindex == -1 ){ System.out.println("안내) 동일한 계좌번호가 없습니다. "); return; }
+        // 상대방 계좌번호 확인
+        System.out.print("받는사람계좌번호 : "); String to계좌번호 = scanner.next();
+        int toindex = 계좌찾기( to계좌번호 );
+        if( toindex == -1 ){ System.out.println("안내) 받는사람의 계좌번호가 없습니다. "); return; }
+        // 안내
+        System.out.println("-------------- 받는사람 계좌정보 확인 -------------");
+        System.out.println(" 계좌주 : " + 계좌목록.get(toindex).get계좌주() );
+        System.out.println(" 계좌번호 : " + 계좌목록.get(toindex).get계좌번호() );
+        System.out.println(" 은행명 : " + 계좌목록.get(toindex).get은행명() );
+        System.out.println("--------------------------------------------------");
+        System.out.print("비밀번호");       String 비밀번호 = scanner.next(); // 비밀번호 확인
+        if( !계좌목록.get( fromindex ).get비밀번호().equals( 비밀번호 ) ){
+            System.out.println("안내) 비밀번호가 틀렸습니다. "); return;
+        }
+        System.out.print("이체 할 금액 : ");   int 이체액 = scanner.nextInt();  // 이체액
+        if( 계좌목록.get(fromindex).get예금액() < 이체액 ){ System.out.println("안내) 잔액이 부족합니다. "); }
+        else{
+            계좌목록.get( fromindex ).set예금액( 계좌목록.get( fromindex).get예금액() - 이체액 ); // 본인 계좌에서 이체액 만큼 금액 차감
+            계좌목록.get( toindex ).set예금액( 계좌목록.get( toindex).get예금액() + 이체액 );// 받는 사람 계좌에서 이체액 만큼 금액 증가
+        }
+
+
+
+
+
+    }
     // 6. 계좌생성메소드
     public int 계좌찾기( String 계좌번호 ){
         for ( int i = 0 ; i<계좌목록.size() ; i++ ){ // i는 0부터 계좌목록 리스트의 길이까지 1씩증가 반복
