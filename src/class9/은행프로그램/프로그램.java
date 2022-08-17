@@ -12,7 +12,7 @@ public class 프로그램 {
             System.out.println("------------ 편의점 ATM ----------- ");
             System.out.print("1.계좌생성 2.예금 3.출금 4.잔금 5.이체 선택>> : ");
             int ch = scanner.nextInt();
-            if( ch == 1 ){ atm.계좌생성(); }
+            if( ch == 1 ){   atm.계좌생성(); }
             else if( ch == 2 ){ atm.예금(); }
             else if( ch == 3 ){ atm.출금(); }
             else if( ch == 4 ){ atm.잔금(); }
