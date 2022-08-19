@@ -4,6 +4,15 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/*
+    - 리스트  => Arraylist
+    [ 리스트 선언 ] Arraylist<리스트에담을클래스명> 리스트명 = new Arraylist<>();
+    [ 리스트 객체 추가 ] 리스트명.add( 객체 )
+    [ 리스트 객체 삭제 ] 리스트명.remove( 인덱스 )
+    [ 리스트 객체 호출 ] 리스트명.get( 인덱스 )
+
+ */
+
 public class 로그인프로그램 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in); // 입력객체 선언
@@ -37,8 +46,7 @@ public class 로그인프로그램 {
                 System.out.println("-----------------------------------------");
                 System.out.print("안내] 아이디 "); String id = scanner.next();
                 System.out.print("안내] 비밀번호 : "); String pw = scanner.next();
-                // 리스트에서 동일한 아이디와 비밀번호 찾기
-                boolean 로그인성공 = false;
+                boolean 로그인성공 = false;  // 리스트에서 동일한 아이디와 비밀번호 찾기
                 for( int i = 0 ; i<memberlist.size() ; i++ ){ // i는 0부터 리스트의 길이까지 1씩 증가 반복
                     if( memberlist.get(i).getId().equals( id) ){ // 만약에 i번째 인덱스 객체의 아이디와 입력받은 아이디와 같으면
                         if( memberlist.get(i).getPassword().equals( pw ) ){  // 만약에 i번째 인덱스 객체의 패스워드가 입력받은 패스워드와 같으면
@@ -47,7 +55,24 @@ public class 로그인프로그램 {
                             while (true){ // 로그인성공메뉴
                                 System.out.println("========== 회원 메뉴 ===========");
                                 System.out.print("1.회원탈퇴 2.로그아웃 : ");
-                            }
+                                int ch3 = scanner.nextInt();
+                                if( ch3 == 1 ){
+                                    System.out.println("-------------------------");
+                                    System.out.print("안내] 정말 탈퇴 하시겠습니까? [Y:예 / N:아니요]");
+                                    String ch4 = scanner.next();
+                                    if( ch4.equals("Y") || ch4.equals("y") ) {
+                                        memberlist.remove(i); // i : 로그인 성공한 객체의 인덱스
+                                        // 리스트명.remove(인덱스) : 해당 인덱스의 데이터 제거
+                                        System.out.println("안내] 회원탈퇴가 되었습니다. 안녕히 가세요!");
+                                        break; // 로그아웃
+                                    }
+                                }
+                                else if( ch3 == 2 ){
+                                    System.out.println("안내] 로그아웃 합니다. ");
+                                    break; // 가장 가까운 반복문 탈출
+                                }
+                                else{  System.out.println("안내] 알수없는 번호입니다. ");  }
+                            } // while end
                             break;
                         }else{
                             System.out.println("안내] 패스워드가 다릅니다. "); break;
