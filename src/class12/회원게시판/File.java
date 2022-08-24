@@ -35,8 +35,14 @@ public class File {
             byte[] bytes = new byte[10000000]; // 대략 1mb
             int count = fin.read( bytes );
             String 가져오기 = new String( bytes , 0 , count-1);
-            // 문자열 -> 객체 -> 리스트 저장 ???
-            System.out.println("파일에 등록된 텍스트 : " + 가져오기);
+            // 문자열 -> 객체 -> 리스트 저장
+            // 문자열 분리하기 [   문자열.split("기준문자") ]
+            String[] 회원들 = 가져오기.split("\n"); // \n 기준으로 분리
+            for( int i = 0 ; i<회원들.length ; i++ ){
+                String[] 필드들 = 회원들[i].split(","); // 필드 분리하기
+                Member member = new Member( 필드들[0] , 필드들[1], 필드들[2], 필드들[3] );
+                Start.memberlist.add( member );
+            }
         }catch (Exception e ){
             System.out.println("안내) 파일이 없습니다.");
         }
