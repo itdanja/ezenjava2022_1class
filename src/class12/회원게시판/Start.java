@@ -51,10 +51,20 @@ public class Start {
     public static void 회원가입(){   // 4개를 입력받아 -> Member 객체 -> 리스트 저장 -> 파일 저장
         System.out.println("------------ 회원가입 페이지 -----------");
         System.out.print("아이디 : ");     String id = scanner.next();  // 1. 입력받기 -> 변수
+
+        // * 아이디 중복체크[ 리스트 안에 모든 객체 호출해서 검사[비교] ]
+        for( int i = 0 ; i<memberlist.size() ; i++ ){
+            if( memberlist.get(i).getId().equals( id ) ){
+                System.out.println("안내) 현재 사용중인 아이디 입니다. ");
+                return; // 함수 종료 [ 아래 코드는 실행X ]
+            } // if end
+        } // for end
+
         System.out.print("비밀번호 : ");   String pw = scanner.next();
         System.out.print("이름 : ");       String name = scanner.next();
         System.out.print("전화번호 : ");   String phone = scanner.next();
         Member member = new Member( id , pw , name , phone );  // 2. 변수4개 --> 객체화 [ 생성자( 변수 , 변수 , 변수 , 변수 ) ]
+
         memberlist.add( member );   // 3. 객체를 리스트에 저장하자
         File.Filesave(); // 4. 리스트에 객체를 저장하는 메소드 호출
     } // 회원가입 end
