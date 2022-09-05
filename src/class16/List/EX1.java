@@ -49,17 +49,18 @@ public class EX1 {
                 3. LinkedList 클래스   : 중간 삽입/삭제 빠르다.
         2. Set 인터페이스
             - 순서[인덱스] 없는 저장
-            1. set명.add( 객체 )           : set에 객체 추가
+            1. set명.add( 객체 )           : set에 객체 추가        [ 중복불가 ]
             2. set명.size( )              : set내 객체 수
             3. set명.remove( 객체 )        : 해당 객체 삭제
             * 클래스
                 1. HashSet 클래스
         3. Map 인터페이스
             - 엔트리(키,값) 저장
-            1. map명.put( 키 , 값 )       : 엔트리(키,값) 추가
-            2. map명.size( )             : 엔트리 개수
-            3. map명.get( 키 )            : 해당의 키의 연결된 값 호출
-            4. map명.setKey( )           : map 내 모든 키 호출
+            1. map명.put( 키 , 값 )            : 엔트리(키,값) 추가      [ key : 중복불가 ]
+            2. map명.size( )                  : 엔트리 개수
+            3. map명.get( 키 )                : 해당의 키의 연결된 값 호출
+            4. map명.setKey( )                : map 내 모든 키 호출
+            5. map명.containsKey( key명 )     : map 내 해당 key 존재하면 true / false
             * 클래스
                 1. HashMap 클래스
 
