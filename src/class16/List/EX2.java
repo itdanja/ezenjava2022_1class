@@ -13,16 +13,21 @@ public class EX2 {
             System.out.println("----- 친구 목록 -----");
             for( int i = 0 ; i<memberList.size() ; i++ ){ // 모든 리스트를 출력하는 반복문
                 System.out.println(
+                        i +"번  " +
                         memberList.get(i).getName() + "  phone : " +
                         memberList.get(i).getPhone() );
             } // for end
-            System.out.print("1.친구등록 : "); int ch = scanner.nextInt();
+            System.out.print("1.친구등록 2.친구삭제 : "); int ch = scanner.nextInt();
             if( ch == 1 ){
                 System.out.print(" 이름 : "); String name = scanner.next();
                 System.out.print(" 번호 : "); String phone = scanner.next();
                 Member member = new Member( name , phone ); // 객체 생성
                 memberList.add( member ); // 리스트에 생성된 객체 추가
             } // if end
+            else if( ch == 2 ){ //
+                System.out.print(" 삭제할 번호(인덱스) : "); int dnum = scanner.nextInt();
+                memberList.remove( dnum );
+            } // else if end
         } // while end
     } // main end
 } // class end
