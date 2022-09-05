@@ -30,8 +30,5 @@ public class EX3 {
             System.out.println( temp.subject+"  " + temp.content+"  "+temp.writer );
         } // for end
 
-
-
-
     } // main end
 } // class end
